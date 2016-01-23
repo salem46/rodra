@@ -1,0 +1,49 @@
+<?php include 'includes/header.php'; ?>
+<?php
+//form required validation
+$Error = array();
+foreach ($_POST as $key=>$value) {
+    if (isset($_POST['submit'])) {
+        if(empty($value)){
+            $Error[$key] = "<span style='color: red'> $key is required";
+        }
+    }
+}
+?>
+<form action="validation.php" method="post">
+
+    <ol><li>
+            <h2>Form Validation</h2>
+            <label>All field are required </label><BR/>
+            <label>User Name *</label>
+            <input class="input" name="name" type="text" value=""><BR/>
+<?php if(isset($Error['name'])) echo$Error['name']; ?>
+        </li><li>
+            <label>Password *</label>
+            <input class="input" name="password" type="password" value=""><BR/>
+<?php if(isset($Error['password'])) echo$Error['password'];?>
+        </li><li>
+            <label>Rewrite Password</label>
+            <input class="input" name="rwpassword" type="password" value=""><BR/>
+<?php if(isset($Error['rwpassword'])) echo$Error['rwpassword']; ?>
+        </li><li>
+            <label>Age</label>
+            <input class="input" name="age" type="number" value=""><BR/>
+<?php if(isset($Error['age'])) echo$Error['age']; ?>
+        </li><li>
+            <label>Email Address *</label>
+            <input class="input" name="email" type="text" value=""><BR/>
+<?php if(isset($Error['email'])) echo$Error['email']; ?>
+        </li><li>
+            <label>Mobile</label>
+            <input class="input" name="mobile" type="number" value=""><BR/>
+<?php if(isset($Error['mobile'])) echo$Error['mobile']; ?>
+        </li><li>
+            <BR/>
+            <input class="submit" name="submit" type="submit" value="Check"><BR/>
+        </li></ol>
+</form>
+
+
+
+<?php include 'includes/footer.php'; ?>
